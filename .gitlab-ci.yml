@@ -1,0 +1,49 @@
+image: node:18-alpine
+
+cache:
+  paths:
+    - node_modules/
+
+before_script:
+  - 'which ssh-agent || ( apk add openssh-client )'
+  - eval $(ssh-agent -s)
+  - ssh-add <(echo "$PRIVATE_KEY")
+  - mkdir -p ~/.ssh
+  - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  - GENERATE_SOURCEMAP=false
+  - export NODE_OPTIONS="--max_old_space_size=3045"
+  - node --max-old-space-size=3045
+  - node -e "console.log(v8.getHeapStatistics().heap_size_limit / (1024 * 1024))"
+
+stages:
+  - dev
+  - qa
+  - production
+
+deploy_dev:
+  stage: dev
+  script:
+    - chmod +x ./deploy/deploy.sh
+    - ls
+    - ./deploy/deploy.sh dev $DEV_SERVER
+  only:
+    - dev
+
+deploy_qa:
+  stage: qa
+  script:
+    - chmod +x ./deploy/deploy.sh
+    - ls
+    - ./deploy/deploy.sh qa $QA_SERVER
+  only:
+    - qa
+
+deploy_production:
+  stage: production
+  script:
+    - chmod +x ./deploy/deploy.sh
+    - ls
+    - ./deploy/deploy.sh production $PROD_SERVER
+    
+  only:
+    - production

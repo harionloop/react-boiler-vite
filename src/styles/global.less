@@ -1,0 +1,148 @@
+a {
+  font-weight: 500;
+}
+
+.error {
+  color: @error-color !important;
+}
+
+.error-sub-msg {
+  color: @error-color !important;
+  font-size: small;
+}
+
+.error-border {
+  border: 1px solid @error-color;
+}
+
+.site-layout-background {
+  background: @background-secondary;
+}
+
+.main-btn {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.hover-shadow {
+  transition: 0.4s ease-in-out all;
+  &:hover {
+    box-shadow: @app-primary 0px 1rem 12px -10px;
+  }
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none !important;
+}
+
+.formWrapper {
+  box-shadow: 0 0 10px @secondary-bg-shadow;
+  background-color: @background-primary;
+  padding: 20px;
+  margin: 20px 0px;
+  border-radius: @border-radius-l;
+}
+
+.inActiveLink {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.card-no-background {
+  height: 100%;
+  width: 100%;
+  border: none;
+  background: transparent;
+}
+
+.mixin-loop (@i) when (@i > 0) {
+  &:nth-child(@{i}) {
+    animation: show-inner 0.8s 80 + @i * 20ms ease infinite alternate;
+  }
+  .mixin-loop(@i - 1);
+}
+
+.ani-back {
+  svg path {
+    .mixin-loop(31);
+  }
+}
+
+@keyframes show-inner {
+  0% {
+    opacity: 0.5;
+    fill: #ffffff37;
+  }
+  80% {
+    fill: transparent;
+  }
+  100% {
+    opacity: 1;
+    fill: transparent;
+  }
+}
+
+.avatar-style {
+  background-color: @app-secondary-shade;
+  color: @app-primary-light-shade;
+  text-transform: uppercase;
+}
+
+.avatar-frame {
+  border-radius: 50%;
+  padding: 0px;
+  border: 2px solid transparent;
+  transition: 0.4s ease-in-out all;
+
+  &:hover {
+    border: 2px solid @app-secondary;
+    padding: 4px;
+  }
+}
+
+.sub-title {
+  color: @text-secondary;
+}
+
+.required {
+  color: @error-color;
+}
+
+.read-only {
+  transition: 0.3s ease-in-out all;
+  color: @app-secondary !important;
+  font-weight: 600 !important;
+  font-size: large !important;
+}
+
+.disabled-wrapper {
+  background-color: @background-secondary;
+  filter: blur(5px);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.next-btn {
+  min-width: 110px;
+  height: 44px;
+}
+
+.MuiCalendarPicker-root {
+  button.Mui-selected {
+    color: @text-accent;
+  }
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: @app-primary !important;
+
+  .ant-spin-dot-item {
+    background-color: @app-primary;
+  }
+}

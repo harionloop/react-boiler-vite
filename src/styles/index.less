@@ -1,0 +1,103 @@
+@import '../theme/colors.less';
+@import '../theme/antTheme.less';
+@import '../theme/fonts.less';
+@import '../theme/theme.less';
+
+@import './utilities.less';
+@import './ant.less';
+@import './global.less';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: @font-md;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+body,
+#root {
+  width: 100%;
+  height: 100vh;
+  background: @background-secondary;
+  overflow: hidden;
+  color: @text-primary;
+}
+
+* {
+  outline: 0;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  .Gilroy;
+}
+
+//scrollbar
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px !important;
+  height: 7px !important;
+}
+
+/* Track */
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #88888888;
+  border-radius: 14px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
+::selection {
+  background: fade(@app-primary, 20%);
+  color: @text-primary;
+}
+
+/* For Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+/* Webkit browsers like Safari and Chrome */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input {
+  &:-webkit-autofill::first-line,
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    font-family: @font-family;
+    transition: all 600000s 0s;
+    font-size: initial;
+    line-height: inherit;
+    color: initial;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: @app-secondary;
+  &:hover {
+    color: @app-primary;
+  }
+}

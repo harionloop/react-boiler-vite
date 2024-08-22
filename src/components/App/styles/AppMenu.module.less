@@ -1,0 +1,51 @@
+@import '../../../theme/theme.less';
+
+.common() {
+  border-radius: @border-radius;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  color: @text-accent;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: 0.2s ease-in-out all;
+  cursor: pointer;
+}
+
+.appMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  max-width: 80px !important;
+  min-width: 80px !important;
+  background-image: linear-gradient(mix(@app-primary, @app-secondary, 80%) 0px, mix(@app-primary, @app-secondary, 10%) 100%);
+
+  .appMenuItem {
+    .common();
+    background-color: transparent;
+  }
+}
+
+.sideMenu {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: @background-primary;
+
+  .toggleMenuSwitch {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    z-index: 1;
+  }
+
+  .sideMenuItem {
+    background-color: @app-secondary;
+  }
+}
